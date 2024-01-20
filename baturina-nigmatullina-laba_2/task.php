@@ -24,9 +24,11 @@
     </nav>
     <a href="index.php">Домой</a>
     <h1 id="timer">200</h1>
-
+  
 
 <?php
+  echo (date("l dS of F Y h:I:s A"));
+
 $var1 = 0;
 $var2 = 0;
 $var3 = 0;
