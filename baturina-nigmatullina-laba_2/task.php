@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<style>
+    <style>
     body{
         background-color:#ddeeff;
     }
 </style>
 </head>
+
 <body>
 <nav>
         <div class="name">
@@ -23,195 +25,252 @@
         </div>
     </nav>
     <a href="index.php">Домой</a>
-    <h1 id="timer">200</h1>
-  
-
-<?php
-  echo (date("l dS of F Y h:I:s A"));
-
-$var1 = 0;
-$var2 = 0;
-$var3 = 0;
-$var4 = 0;
-$var5 = 0;
-$var6 = 0;
-
-function random($min,$max){
-    return mt_rand($min,$max);
-};
-
-function number($line){
-    $str=" ";
-    for($i=0; $i<$line; $i++){
-        if($i==0) $str.=1;
-        else $str.=random(0,1);
-    }
-    return $str;
-}
-
-$answer=[];
-for($i=0; $i<4; $i++){
-    switch($_GET['task']){
-
-
-        // задача 1
-        case 0:
-            $var1 = number(random(2,5));
-            $answer[$i]=base_convert($var1, 2, 10);
-            echo "<p>Необходимо перевести значение <i id=quest$i>$var1</i> из 2сс в 10сс. В качество ответа указать число</p>";
-            echo "<label>Ответ:</label><input type='number' id='answer$i' <input type='submit'>  <br><hr>";
-            break; 
-
-
-            // задача 2
-            
-            case 1:
-                $numbers = [128, 256, 16];
-                $numColors = $numbers[array_rand($numbers)];
-                $var2 = rand(100, 200); // Размер изображения по горизонтали
-                $var3 = rand(100, 200); // Размер изображения по вертикали
-            echo "<p>Какой минимальный объём памяти (в Кбайт) нужно зарезервировать, чтобы можно было сохранить любое растровое изображение размером $var2 × $var3 пикселей при условии, что в изображении могут использоваться $numColors различных цветов? В ответе запишите только целое число, единицу измерения писать не нужно.</p>";
-           echo "<label>Ответ:</label><input type='number'> <input type='submit'>  <br><hr>";
-
-                break;
-
-
-    // задача 3
-            case 2:
-                // Создаем массив с русскими буквами
-                $alphabet = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
-
-                // Выбираем рандомную букву
-                $bigText ="Я вас любил: любовь еще, быть может,
-                В душе моей угасла не совсем;
-                Но пусть она вас больше не тревожит;
-                Я не хочу печалить вас ничем.
-                Я вас любил безмолвно, безнадежно,
-                То робостью, то ревностью томим;
-                Я вас любил так искренно, так нежно,
-                Как дай вам Бог любимой быть другим.
-                
-                Сижу за решеткой в темнице сырой.
-                Вскормленный в неволе орел молодой,
-                Мой грустный товарищ, махая крылом,
-                Кровавую пищу клюет под окном,
-                Клюет, и бросает, и смотрит в окно,
-                Как будто со мною задумал одно.
-                Зовет меня взглядом и криком своим
-                И вымолвить хочет: «Давай улетим!
-                Мы вольные птицы; пора, брат, пора!
-                Туда, где за тучей белеет гора,
-                Туда, где синеют морские края,
-                Туда, где гуляем лишь ветер… да я!..»
-                
-                Уж небо осенью дышало,
-                Уж реже солнышко блистало,
-                Короче становился день,
-                Лесов таинственная сень
-                С печальным шумом обнажалась,
-                Ложился на поля туман,
-                Гусей крикливых караван
-                Тянулся к югу: приближалась
-                Довольно скучная пора;
-                Стоял ноябрь уж у двора.
-                
-                В тот год осенняя погода
-                Стояла долго на дворе,
-                Зимы ждала, ждала природа.
-                Снег выпал только в январе
-                На третье в ночь. Проснувшись рано,
-                В окно увидела Татьяна
-                Поутру побелевший двор,
-                Куртины, кровли и забор,
-                На стеклах легкие узоры,
-                Деревья в зимнем серебре,
-                Сорок веселых на дворе
-                И мягко устланные горы
-                Зимы блистательным ковром.
-                Все ярко, все бело кругом.
-                ";
-                
-                $alphabet = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
-                $lines = explode("\n", $bigText);// Разбиваем текст на массив строк
-                // Выбираем случайные строки
-                $randomLines = array_rand($lines, 7); // Выберем 3 случайные строки
-                $var6 = "";
-                foreach($randomLines as $lineIndex) {
-                    $var6 .= $lines[$lineIndex] . "\n";
-                }
-                $var5 = $alphabet[rand(0, count($alphabet) - 1)];
-                echo "<p>Напишите количество вхождений символа <b>$var5</b> в тексте: $var6. В ответ записать число вхождений.</p>";
-                echo "<label>Ответ:</label><input type='number'><input type='submit'>  <br> <hr>";
-                break;
+    <h1 id="seconds">200</h1>
     
-            default:
-                echo "Неправильный номер задачи";
+
+    <?php
+
+
+    function random($min, $max)
+    {
+        return mt_rand($min, $max);
+    }
+
+
+
+    function get2SS($len)
+    {
+        $str = "";
+        for ($i = 0; $i < $len; $i++) {
+            if ($i == 0)
+                $str .= 1;
+            else
+                $str .= random(0, 1);
         }
-}
-echo  "<input type='submit'onclick='example()'>"; 
-
- ?>
-
-<script>
-   function example() {
-  var area = document.getElementById("areaforanswer");
-  var answer0 = document.getElementById("answer0").value;
-  var answer1 = document.getElementById("answer1").value;
-  var answer2 = document.getElementById("answer2").value;
-  var answer3 = document.getElementById("answer3").value;
-
-  var quest0 = document.getElementById("quest0").textContent;
-  var quest1 = document.getElementById("quest1").textContent;
-  var quest2 = document.getElementById("quest2").textContent;
-  var quest3 = document.getElementById("quest3").textContent;
-  area.innerHTML = `<label> Ваш ответ: ${answer0} ${
-    convertToBinary1(answer0) == quest0 ? "верно" : "Неверно"
-  }  <label> 
-  <br>
-   <label>  ${
-     convertToBinary1(answer1) == quest1 ? "верно" : "Неверно"
-   }  <label>
-  <br>
- <label>  ${convertToBinary1(answer2) == quest2 ? "верно" : "Неверно"}  <label>
-  <br>
- <label>  ${convertToBinary1(answer3) == quest3 ? "верно" : "Неверно"}  <label>
-  <br>
-  `;
-  function convertToBinary1(number) {
-    let num = number;
-    let binary = (num % 2).toString();
-    for (; num > 1; ) {
-     
-      num = parseInt(num / 2);
-      binary = (num % 2) + binary;
+        return $str;
     }
-    return binary;
-  }
-}
 
-      // Устанавливаем начальное значение времени в секундах
-      var timeLeft = 50;
-
-// Получаем элемент с id "timer", чтобы обновлять его значение
-var timerElement = document.getElementById("timer");
-
-// Функция для обновления значения таймера каждую секунду
-function updateTimer() {
-    // Уменьшаем значение времени на 1 секунду
-    timeLeft -= 1;
-
-    // Обновляем текст элемента таймера
-    timerElement.textContent = timeLeft;
-
-    // Если время истекло, останавливаем таймер
-    if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        timerElement.textContent = "Время истекло!";
+    function imgSize($len1)
+    {
+        for ($i = 1; $i <= 2; $i++) {
+            if ($i == 1)
+                return $len1;
+            else
+                return $len1;
+        }
     }
-}
-// Запускаем функцию updateTimer каждую секунду
-var timerInterval = setInterval(updateTimer, 1000);
-</script>
-<div id="areaforanswer">
+
+    $var1 = 0;
+    $var2 = 0;
+    $var3 = 0;
+    $var4 = 0;
+    $var5 = 0;
+    $var6 = 0;
+
+
+    $tasks = [
+        "Необходимо перевести значение $var1 из 2СС в 10СС. В качестве ответа указать число.",
+        "Какой минимальный объем памяти нужно зарезервировать, чтобы можно было сохранить любое растроое
+             изображение размером $var2 x $var3 пикселей при условии, что в изображении могут использоваться $var4 различных цветов?",
+        "Напишите количество вхождений символа $var5 в следующем тексте <pre>
+            Я вас любил: любовь еще, быть может,
+            В душе моей угасла не совсем;
+            Но пусть она вас больше не тревожит;
+            Я не хочу печалить вас ничем.
+            Я вас любил безмолвно, безнадежно,
+            То робостью, то ревностью томим;
+            Я вас любил так искренно, так нежно,
+            Как дай вам Бог любимой быть другим.
+            </pre>. Записать число вхождений '$var6'"
+    ];
+
+    // $colors = ['16', '128', '256'];
+    // $key = array_rand($colors);
+    
+    // $randomElement= $colors[$key]
+    
+    //         $myArray = ['16', '128', '256'];
+    
+    // $randomElementKey = array_rand($myArray);
+// $randomElement = $myArray[$randomElementKey];
+    
+    // echo "элемент: " . $randomElement;
+    
+    $randomElementsArray = array('16', '128', '256');
+
+    function randColor($randomElementsArray)
+    {
+        return $randomElementsArray[array_rand($randomElementsArray)];
+    }
+    ;
+
+
+
+    $alphabet = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+
+    function randLetter($alphabet)
+    {
+        return $alphabet[array_rand($alphabet)];
+    }
+
+    $poems = [
+        '<pre>
+        Пусть бегут неуклюже
+        Пешеходы по лужам,
+        А вода по асфальту рекой.
+        И неясно прохожим
+        В этот день непогожий,
+        Почему я веселый такой?</pre>',
+
+        '<pre>
+        А я играю на гармошке
+        У прохожих на виду.
+        К сожаленью, день рожденья
+        Только раз в году.</pre>',
+
+        '<pre>
+        Прилетит вдруг волшебник
+        В голубом вертолете
+        И бесплатно покажет кино.
+        С днем рожденья поздравит
+        И, наверно, оставит
+        Мне в подарок пятьсот эскимо.</pre>'
+    ];
+
+    function randPoem($poems)
+    {
+        return $poems[array_rand($poems)];
+    }
+
+    function logNum($var2, $var3, $var4)
+    {
+
+        $logI = log($var4, 2);
+        $bit = $var2 * $var3 * $logI;
+        return $kbite = floor($bit / (8 * 1024));
+
+    }
+    ;
+
+    function letterInPoem($var5, $var6)
+    {
+        $randomLetter = mb_strtolower(strval($var5));
+        $lettersArray = mb_str_split(mb_strtolower($var6));
+        $count = 0;
+
+        foreach ($lettersArray as $letter) {
+            if ($letter === $randomLetter) {
+                $count++;
+            }
+        }
+
+        
+        return $count;
+    }
+
+    ?>
+    <form method="get">
+        <?php
+
+
+
+        for ($i = 0; $i < 4; $i++) {
+            switch ($_GET['task']) {
+
+                case 0:
+                    $var1 = get2SS(random(2, 5));
+                    echo "<p>Необходимо перевести значение $var1 из 2СС в 10СС. В качестве ответа указать число.</p>";
+                    $result = base_convert(strval($var1), 2, 10);
+                
+                    echo "<label>Ответ:</label><input type='number' id='ans_user$i' name='ans_user$i'> <br>";
+                    echo "<input type='hidden' id='ans$i' value='$result'>";
+                    echo "<p id='val$i'></p>";
+                    break;
+
+                case 1:
+                    $var2 = imgSize(random(128, 256));
+                    $var3 = imgSize(random(128, 256));
+                    $var4 = randColor($randomElementsArray);
+
+                    echo "<p>Какой минимальный объем памяти нужно зарезервировать, чтобы можно было сохранить любое растроое изображение размером $var2 x $var3 пикселей при условии, что в изображении могут использоваться $var4 различных цветов?</p>";
+                    echo "<label>Ответ:</label><input type='number' id='ans_user$i' name='ans_user$i'> <br>";
+                    echo "<input type='hidden' id='ans$i' value= '" . logNum($var2, $var3, $var4) . "'>";
+
+                    echo "<p id='val$i'></p>";
+
+                    break;
+
+
+                case 2:
+                    $var5 = randletter($alphabet);
+                    $var6 = randPoem($poems);
+                    echo "<p>Напишите колличество вхождений символа $var5 в следующем тексте <pre> 
+                            $var6 
+                            </pre> Записать число вхождений $var5</p>";
+                    echo "<label>Ответ:</label><input type='number' id='ans_user$i' name='ans_user$i'>   <br>";
+                    echo "<input type='hidden' id='ans$i' value= '" . letterInPoem($var5, $var6) . "'>";
+                    echo "<p id='val$i'></p>";
+                    break;
+            }
+        }
+
+        
+        echo "<input type='button' value='Отправить' id='btn'> ";
+        ?>
+
+    </form>
+
+
+
+
+    <script>
+
+        var seconds = 60;
+        var intervalId = setInterval(function () {
+            document.getElementById("seconds").innerHTML = seconds;
+            if (seconds == 0) {
+                clearInterval(intervalId);
+                alert("время вышло");
+            } else {
+                seconds--;
+            }
+        }, 1000);
+
+
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            clearInterval(intervalId);
+
+            for (let i = 0; i < 4; i++) {
+                let ans = document.getElementById(`ans${i}`).value;
+                let ans_user = document.getElementById(`ans_user${i}`).value;
+                console.log(ans);
+                console.log(ans_user);
+                document.getElementById(`val${i}`).innerText = `Правильный ответ: ${ans}`;
+
+                if (ans == ans_user) {
+                    document.getElementById(`ans_user${i}`).style.color = 'green';
+                }
+                else {
+                    document.getElementById(`ans_user${i}`).style.color = 'red';
+                }
+            }
+        })
+
+
+    </script>
+
+
+
+
+    
+
+
+
+
+   
+
 </body>
+
 </html>
